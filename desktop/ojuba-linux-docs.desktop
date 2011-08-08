@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Ojuba Linux Documentation
+Name[ar]=وثائق أعجوبة لينكس
+GenericName=OS documentation
+GenericName[ar]=وثائق نظام التشغيل
+Comment=Ojuba Linux Documentation
+Comment[ar]=وثائق أعجوبة لينكس
+Exec=htmlview /usr/share/doc/HTML/ojuba-linux-docs/index.html
+Icon=help-about
+Terminal=false
+Type=Application
+

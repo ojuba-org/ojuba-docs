@@ -1,0 +1,365 @@
+/*
+
+CSS for Red Hat Linux Project docs from the Documentation Project
+
+Written by Tammy Fox and Garrett LeSage
+
+Copyright 2003 Tammy Fox, Garrett LeSage, and Red Hat, Inc.
+Copywight 2005 Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+License: GPL
+
+*/
+
+body	{
+	background-color:	#FEFEFF;
+	background-image:	url('watermark.png');
+	background-position:	top center;
+	background-repeat:	repeat;
+}
+
+li p {
+	/* # display: inline; */
+}
+
+li p.title {
+        display: inline;
+}
+
+div.table table {
+	width: 95%;
+	background-color: #DCDCDC;
+	color: #000000;
+	border-spacing: 0;
+}
+
+div.table table th {
+	border: 1px solid #A9A9A9;
+	background-color: #A9A9A9;
+	color: #000000;
+}
+
+div.table table td {
+	border: 1px solid #A9A9A9;
+	background-color: #DCDCDC;
+	color: #000000;
+	padding: 0.5em;
+	margin-bottom: 0.5em;
+	margin-top: 2px;
+
+}
+
+div.note table, div.tip table, div.important table, div.caution table, div.warning table {
+	width: 95%;
+	font-size: 80%;
+	border: 2px solid #D0D0B0;
+	background-color: #FAF9E0;
+	color: #000000;
+	/* padding inside table area */
+	padding: 0.3em;
+	margin-bottom: 0.5em;
+	margin-top: 0.5em;
+}
+
+.qandaset table {
+	border-collapse: collapse;
+}
+.qandaset {
+}
+.qandaset tr.question {
+}
+.qandaset tr.question td {
+	font-weight: bold;
+	padding: 1em 1em 0;
+}
+.qandaset tr.answer td {
+	padding: 0.25em 1em 1.5em;
+}
+.qandaset tr.question td, .qandaset tr.answer td {
+}
+
+hr {
+	border: 0;
+	border-bottom: 1px solid #ccc;
+}
+
+h1, h2, h3, h4 {
+	font-family: "Dejavu Sans", sans-serif;
+	color: #22437f;
+	font-weight: bold;
+}
+h1 {
+	font-size: 1.75em;
+}
+
+h2 {
+	font-size: 1.25em;
+}
+
+h3 {
+	font-size: 1.1em;
+}
+
+a:link {
+	color: #900;
+}
+a:visited {
+	color: #48468f;
+}
+a:hover {
+	color: #f20;
+}
+
+code.screen, pre.screen {
+	font-family: monospace;
+	font-size: 1em;
+	display: block;
+	padding: 10px;
+	border: 1px solid #bbb;
+	background-color: #eee;
+	color: #000;
+	overflow: auto;
+	border-radius: 2.5px;
+	-moz-border-radius: 2.5px;
+	margin: 0.5em 2em;
+}
+
+div.example {
+	padding: 10px;
+	border: 1px solid #bbb;
+	margin: 0.5em 2em;
+}
+
+.procedure ol li {
+	margin-bottom: 0.5em;
+}
+.procedure ol li li {
+	/* prevent inheritance */
+	margin-bottom: 0em;
+}
+.procedure ol li pre {
+	margin-bottom: 1em;
+}
+
+.itemizedlist ul li {
+	margin-bottom: 0.5em;
+}
+.itemizedlist ul li li {
+	/* prevent inheritance */
+	margin-bottom: 0em;
+}
+
+p.title	{
+	text-align: center;
+}
+
+
+
+
+/*
+
+Fedora Local Homepage CSS stylesheet
+
+Copyright 2006 Dimitris Glezos <dimitris@glezos.com>,
+	       Paul W. Frields <stickster@gmail.com>
+
+License: GPL
+
+*/
+
+body {
+	font-size: 0.95em;
+	padding: 0;
+	margin: 0;
+	background-image:	url('img/header-bg.png');
+	background-position:	0 0;
+	background-repeat:	no-repeat;
+}
+
+div.article {
+	width: 85%;
+	margin: 0 auto;
+}
+
+div#header {
+	/* background-repeat:	no-repeat; */
+/*	border-bottom: 1px solid #001246;
+	border-bottom: 2px #c0d0e7 solid;
+	padding-bottom: 1px;*/
+	/* height: 60px; */
+	padding: 0 10%;
+}
+
+div#headerTitle {
+	float: right;
+	margin-top: 15px;
+	display: none;
+}
+
+div#headerLogo {
+	float: right;
+	margin-top: 20px;
+	/* margin-top: 13px; */
+}
+
+div#summary {
+	clear: both;
+	/*padding-top: 0.5em;*/
+	text-align:justify;
+}
+
+/* Two columns */
+
+div#column1 {
+	width: 45%;
+	float: left;
+}
+div#column2 {
+	width: 45%;
+	float: right;
+}
+
+/* Each doc's box */
+
+div.aDoc {
+	border-top: 2px #c0d0e7 solid;
+	text-align:justify;
+	padding: 0 0.5em;
+}
+
+div.aDoc h3 {
+	background-position:	top right;
+	background-repeat:	no-repeat;
+	height: 24px;
+}
+
+/* Box icons */
+
+div.releaseNotes h3 {
+	background-image:	url('img/package-x-genericL-24px.png');
+}
+
+div.desktopUserGuide h3 {
+	background-image:	url('img/user-desktopL-24px.png');
+}
+
+div.installationGuide h3 {
+	background-image:	url('img/computer-24px.png');
+}
+
+div.fedoraWebsite h3 {
+	background-image:	url('img/fedora-logo-24px.png');
+}
+
+div.communityWebsites h3 {
+	background-image:	url('img/applications-internetL-24px.png');
+}
+
+/* Other styles */
+
+h1 {
+	font-size: 1.6em;
+}
+
+h2 {
+	color: #0a56a4;
+	font-size: 1.6em;
+}
+
+h3 {
+	font-size: 1.2em;
+	font-style: italic;
+}
+
+.external {
+        background: url('img/external-link.png') right top no-repeat;
+        padding-right: 15px;
+}
+
+a.simpleLink {
+	background: none;
+	padding: 0;
+	border: none;
+}
+
+a.simpleLink img {
+	border: none;
+}
+
+p.note,
+p.otherLangs {
+	font-size: 0.85em;
+	color: #333;
+}	
+
+div.article div.sect1 div.sect2 {
+  width: 47%;
+  float: left;
+}
+
+div.article div.sect1 div.sect2 + div.sect2 {
+  width: 47%;
+  float: right;
+
+}
+
+div.sect3 {
+  border-top: 2px #c0d0e7 solid;
+/*  text-align:justify; */
+  padding: 0 0.5em;
+}
+
+/* Icon placement */
+div.sect1 div.sect2 div.sect3 h4 {
+  background-position: 100% 0;
+  background-repeat: no-repeat;
+  height: 2em;
+  margin-bottom: 0;
+}
+
+/* Release notes */
+div.sect1 p + div.sect2 > div.titlepage + div.sect3 h4 {
+  background-image: url('img/package-x-genericL-24px.png');
+}
+
+/* Installation Guide */
+div.sect1 p + div.sect2 > div.titlepage + div.sect3 + div.sect3 h4 {
+  background-image: url('img/computer-24px.png');
+}
+
+/* Desktop User Guide */
+div.sect1 p + div.sect2 > div.titlepage + div.sect3 + div.sect3 + div.sect3 h4 {
+  background-image: url('img/user-desktopL-24px.png');
+}
+
+/* Fedora Project */
+div.sect1 div.sect2 + div.sect2 > div.titlepage + div.sect3 h4 {
+  background-image: url('/usr/share/icons/hicolor/24x24/apps/fedora-logo-icon.png');
+}
+
+/* Community */
+div.sect1 div.sect2 + div.sect2 > div.titlepage + div.sect3 + div.sect3 h4 {
+  background-image: url('img/applications-internetL-24px.png');
+}
+
+div.sect3 h4 {
+/*  background-position:  top right;
+  background-repeat:  no-repeat; */
+  padding-right: 30px;
+}
+
+div#browserSplash > div.titlepage:first-child {
+  background-image: url('/usr/share/pixmaps/fedora-logo-small.png');
+  background-position:  top right;
+  background-repeat:  no-repeat;
+  height: 60px;
+  margin-top: 20px;
+}
+
+div#browserSplash > div.titlepage:first-child h2 {
+  display: none;
+}
+
+hr {
+  display: none;
+}

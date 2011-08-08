@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Release Notes
+Name[ar]=ملحوظات الإصدارة
+GenericName=Release Notes
+GenericName[ar]=ملحوظات الإصدارة
+Comment=Release Notes for Ojuba 4
+Comment[ar]=ملحوظات الإصدارة 4 من أعجوبة
+Exec=htmlview /usr/share/doc/HTML/release-notes/RELEASE-NOTES-ar.html
+Icon=help-about
+Terminal=false
+Type=Application
+

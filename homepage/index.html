@@ -1,0 +1,658 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html dir="rtl">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<title>أعجوبة لينكس</title>
+		<!-- DO NOT TRANSLATE THIS CONTENT, OBVIOUSLY. :-) -->
+		<style type="text/css">
+body {
+background:transparent url(images/art.png) repeat scroll 0%;
+}
+#sitestable td {
+vertical-align: top;
+}
+a:link {
+	color: #060;
+}
+a:visited {
+	color: #240;
+}
+a:hover {
+	color: #02f;
+}
+#page {
+-moz-border-radius-bottomleft:10px;
+-moz-border-radius-bottomright:10px;
+-moz-border-radius-topleft:10px;
+-moz-border-radius-topright:10px;
+background:#F8FFF0 none repeat scroll 0%;
+border:3px solid #80A050;
+color:#000000;
+margin-bottom:6px;
+margin-top:6px;
+overflow:auto;
+padding-left:6px;
+padding-right:6px;
+}
+
+h1 {
+background:transparent url(images/bg-diagonals-dark.png) repeat scroll 0%;
+border:medium none;
+color:#FFFFFF;
+font-size:1.7em;
+font-weight:bold;
+line-height:1.9em;
+margin:0.2em 0pt 0.1em;
+padding:0pt 0.7em;
+}
+
+
+h2 {
+background:transparent url(images/bg-diagonals-light.png) repeat scroll 0%;
+border:medium none;
+color:#2B6107;
+font-size:1.4em;
+line-height:1.8em;
+margin:0.2em 0pt 0.1em;
+padding:0pt 1.7em;
+}
+
+blockquote {
+-moz-border-radius-bottomleft:10px;
+-moz-border-radius-bottomright:10px;
+-moz-border-radius-topleft:10px;
+-moz-border-radius-topright:10px;
+background:#FFFFF0 none repeat scroll 0%;
+border:3px solid #A0A050;
+color:#000000;
+margin-bottom:6px;
+margin-top:6px;
+overflow:auto;
+padding-left:6px;
+padding-right:6px;
+}
+blockquote p::before {
+  content: open-quote;
+  font-size: 3em;
+}
+
+blockquote p::after {
+  content: close-quote;
+  font-size: 3em;
+#  visibility: hidden;
+}
+
+				div {
+					padding:		0px;
+					margin:			0px;
+				}
+				body {
+					font-family: 	Arial, sans;
+					font-size:		12px;
+					border-width:	0px;
+					padding:		0px;
+					margin:			0px;
+				}
+				a img { 
+					border-width:	0px;
+				}
+				.rh-large-font {
+					font-size:	14px;
+				}
+				.rh-large-bold-font {
+					font-size:	14px;
+					font-weight: bold;
+				}				
+				#rhPage {
+					margin:		20px;
+				}
+				#rhTopStuff {
+					position:	relative;
+				}
+				#rhLogo {
+					float:  right;
+				}
+				#rhTopSearchStuff {
+
+				}
+				#rhSearchResultsStuff {
+					position:		relative;
+					margin-top:		20px;
+				}
+				#rhSearchResultsColumn {
+					position:		relative;
+					margin-right:	239px; /* 14px + 1px + 14px + 210px */
+				}
+				#rhSearchAdsColumn {
+					position:	absolute;
+					top:		0px;
+					right:		0px;
+					width:		225px; /* 1px + 14px + 210px */
+				}
+				#rhSearchResultsHeaderBox {
+					height:				25px;
+					background-image:	url(${controller.headerBarGradientImage});
+					background-repeat: 	repeat-x;
+					color:				white;
+				}
+				#rhSearchResultsHeaderBox table {
+					margin-top:			2px;
+					margin-bottom:		2px;
+					width:				100%; /* this keeps any left/right margin from working */
+				}
+				#rhSearchAdsColumn .rh-ad-block {
+					border-left:	1px solid #CCCCCC;
+					margin-bottom:	18px;
+				}
+				#rhSearchAdsColumn .rh-ad-block-inside {
+					position:		relative;
+					margin-left:	14px;
+				}
+				#rhSearchAdsColumn .rh-ad-block .title {
+					font-size:		14px;
+					font-weight: 	bold;
+					color:			#666666;
+				}
+				#rhBottomSeparator {
+					width:				100%;
+					height:				1px;
+					background-color: 	#CCCCCC;
+					margin-top:			20px;
+					margin-bottom:		20px;
+					/* the rest of this is IE6 hacks to keep it from forcing the div to the font height */
+					min-height:			1px;
+					max-height:			1px;
+					font-size:			0px;
+					overflow:			hidden;
+				}
+				.rh-sponsored-result {
+					position:			relative;
+					background-color:	#FFF9BD;
+					margin-top:			6px;
+					padding:			5px;
+				}
+				.rh-sponsored-result .rh-is-sponsored {
+					position:			absolute;
+					right:				5px;
+					top:				5px;
+					color:				#666666;
+				}
+				.rh-sponsored-result .rh-result-details {
+					margin-top:			5px;
+				}
+				.rh-sponsored-result .rh-result-link {
+					color:				#008000;
+				}
+				.rh-sponsored-result .rh-result-text {
+					color:				#000000;
+				}
+				.rh-organic-result {
+					margin-top:		18px;
+				}
+				.rh-result-title {
+					font-size:		14px;
+					font-weight: 	bold;					
+				}
+				.rh-result-excerpt {
+				}
+				.rh-result-notes {
+					color:			#777777;
+				}
+				#rhResultsPager {
+					margin-top:		18px;
+				}
+				.rh-ad {
+					margin-top: 	16px;
+				}
+				.rh-ad .rh-ad-title {
+					font-size:	14px;
+				}
+				.rh-ad .rh-ad-link {
+					color:			#777777;
+				}
+		</style>
+	</head>
+	<body onload="document.f.q.focus();">
+<h1>أعجوبة لينكس</h1>
+		<div id="rhPage">
+			<div id="rhTopStuff">	
+				<div id="rhTopSearchStuff">
+					<center>
+						<div style="position: relative; width: 650px; height: 175px; background-image: url('images/faint_box_650x175.png'); background-repeat: no-repeat;">
+							<div style="margin: 0px;">
+								<form action="http://www.google.com/search" name="f">
+									<!--  height 155px here is a little hack to shift the content up in the box -->
+									<table style="width: 650px; height: 155px;" cellpadding="0" cellspacing="0">
+										<tbody>
+											<tr valign="middle">
+												<td align="center">
+													<table cellpadding="0" cellspacing="0">
+														<tbody>
+															<tr valign="middle">
+																<td colspan="2" align="right">
+																	<div>
+																		<span class="rh-large-bold-font">البحث في الويب</span>
+																	</div>
+																</td>
+																<td><!--Cell above Search button-->
+																</td>
+															</tr>
+															<tr>
+																<td colspan="2">
+																	<div style="position: relative; margin-right: 8px; margin-top: 4px; margin-bottom: 4px;">
+																		<input name="q" style="width: 100%;"/>
+																	</div>
+																</td>
+																<td>
+																	<div style="margin-top: 4px; margin-bottom: 4px;">
+																		<input type="submit" value="بحث"/>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<div style="margin-right: 4px;">
+																		أسلوب حصر النتائج
+																		<select name="as_rights">
+																			<option value="">
+																				دون فلترة بحسب الرخصة
+																			</option>												
+																			<option value="(cc_publicdomain|cc_attribute|cc_sharealike|cc_noncommercial|cc_nonderived)">
+																				يسمح استخدامه ومشاركته
+																			</option>
+																			<option value="(cc_publicdomain|cc_attribute|cc_sharealike|cc_nonderived).-(cc_noncommercial)">
+																				يسمح استخدامه ومشاركته تجاريا
+																			</option>
+																			<option value="(cc_publicdomain|cc_attribute|cc_sharealike|cc_noncommercial).-(cc_nonderived)">
+																				يسمح استخدامه ومشاركته وتعديله
+																			</option>
+																			<option value="(cc_publicdomain|cc_attribute|cc_sharealike).-(cc_noncommercial|cc_nonderived)">
+																				يسمح استخدامه ومشاركته وتعديله تجاريا
+																			</option>																																																				
+																		</select>
+																	</div>
+																</td>
+																<td align="right"><a href="http://creativecommons.org/"><img src="images/cc_logo_76x18.png" style="width: 76px; height: 18px;"/></a></td>
+																<td><!--Cell below Search button-->
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</form>
+							</div>
+						</div>
+					</center>
+				</div>
+				<div style="clear: both;"> <!-- expand the parent div around contained floats -->
+				</div>
+			</div>
+			<div style="margin-top: 40px;">
+				<center><span class="rh-large-bold-font">أعجوبة <a href="http://www.ojuba.org/">جودة | حرية | امان</a> متوفرة الآن.</span></center>
+			</div>
+			<div style="margin-top: 25px;">
+				<center><span class="rh-large-bold-font"><a href="about-ojuba-ar.html">عن أعجوبة لينكس</a></span></center>			
+			</div>
+<!--			<div style="margin-top: 25px;">
+				<center><span style="color: red; font-size: x-small;">This page is a mockup for discussion purposes, do not assume it will stay around (or if it does stay around, do not assume that this is what will be on it).</span></center> 			
+			</div> -->
+		</div>
+<h1>أدوات لغوية</h1>
+<table width="100%">
+<tr><td><h2>ترجمة المواقع</h2>
+<form action="http://translate.google.com/translate?">
+<input type="hidden" name="hl" value="ar"/>
+<input type="hidden" name="ie" value="UTF8"/>
+<input type="hidden" name="sl" value="en"/>
+<input type="hidden" name="tl" value="ar"/>
+الموقع:
+<span dir="ltr">
+<input name="u" type="text" value="http://"/>
+</span>
+<input type="submit" value="ترجم"/>
+</form>
+<a href="http://translate.google.com/translate_t?hl=ar">المزيد من الخيارات</a>
+</td><td><h2>معنى كلمة عربية</h2>
+<form target="_blank" name="searchForm" ACTION="http://www.baheth.info/web/all.jsp" METHOD="POST">
+الكلمة: 
+<INPUT class="search" type="text" name="search" value="" >
+<Button name="bahth" OnClick="JavaScript: document.searchForm.submit();">ابحث في المعاجم</button>
+<INPUT Type="hidden" id ="selectedSources" name="selectedSources" checked value ="لسان العرب">
+<INPUT Type="hidden" id ="selectedSources" name="selectedSources" checked value ="مقاييس اللغة">
+<INPUT Type="hidden" id ="selectedSources" name="selectedSources" checked value ="الصّحّاح في اللغة">
+<INPUT Type="hidden" id ="selectedSources" name="selectedSources" checked value ="القاموس المحيط">
+<INPUT Type="hidden" id ="selectedSources" name="selectedSources" checked value ="العباب الزاخر">
+</Form>
+<a href="http://www.baheth.info">معاجم الباحث العربي</a>
+</td></tr>
+</table>
+
+<script type="text/javascript">
+
+
+
+document.searchForm.search.onkeypress = keyPress;
+
+
+if (document.layers) 
+
+
+document.searchForm.search.captureEvents(Event.KEYPRESS);
+
+
+
+function keyPress(e) {
+
+
+
+
+var field = document.searchForm.search;
+
+
+
+var tkey=0;
+
+
+
+var flag=0;
+
+
+
+if (document.layers) {
+  tkey=e.which
+}
+else {
+  if (navigator.userAgent.indexOf("Firefox")!=-1) {
+     tkey=e.charCode;
+  }
+  else {
+     tkey=event.keyCode;
+  }
+}
+
+
+
+
+// field.value = tkey;flag=1;
+
+
+
+if (tkey == 32){field.value = field.value + ' '; flag=1}
+
+
+
+if (tkey == 39){field.value = field.value + 'ط'; flag=1}
+
+
+
+if (tkey == 44){field.value = field.value + 'و'; flag=1}
+
+
+
+if (tkey == 46){field.value = field.value + 'ز'; flag=1}
+
+
+
+if (tkey == 47){field.value = field.value + 'ظ'; flag=1}
+
+
+
+//if (tkey >= 48 && tkey <= 57){field.value = field.value + tkey; flag=1}
+
+
+
+//if (tkey >= 48 && tkey <= 57){field.value = field.value + String.fromCharCode(tkey); flag=1}
+
+
+
+if (tkey == 59){field.value = field.value + 'ك'; flag=1}
+
+
+
+if (tkey == 91){field.value = field.value + 'ج'; flag=1}
+
+
+
+if (tkey == 93){field.value = field.value + 'د'; flag=1}
+
+
+
+if (tkey == 96){field.value = field.value + 'ذ'; flag=1}
+
+
+
+if (tkey >= 97 && tkey <= 122){field.value = field.value + ach[tkey-97]; flag=1}
+
+
+
+
+
+
+
+if (tkey == 65){field.value = field.value + 'ِ'; flag=1}
+
+
+
+if (tkey == 83){field.value = field.value + 'ٍ'; flag=1}
+
+
+
+if (tkey == 81){field.value = field.value + 'َ'; flag=1}
+
+
+
+if (tkey == 87){field.value = field.value + 'ً'; flag=1}
+
+
+
+if (tkey == 69){field.value = field.value + 'ُ'; flag=1}
+
+
+
+if (tkey == 82){field.value = field.value + 'ٌ'; flag=1}
+
+
+
+if (tkey == 84){field.value = field.value + 'لإ'; flag=1}
+
+
+
+if (tkey == 89){field.value = field.value + 'إ'; flag=1}
+
+
+
+if (tkey == 85){field.value = field.value + '‘'; flag=1}
+
+
+
+if (tkey == 73){field.value = field.value + '÷'; flag=1}
+ 
+
+
+if (tkey == 79){field.value = field.value + '×'; flag=1}
+
+
+
+if (tkey == 80){field.value = field.value + '؛'; flag=1}
+
+
+
+if (tkey == 71){field.value = field.value + 'لأ'; flag=1}
+
+
+
+if (tkey == 72){field.value = field.value + 'أ'; flag=1}
+
+
+
+if (tkey == 74){field.value = field.value + 'ـ'; flag=1}
+
+
+
+if (tkey == 75){field.value = field.value + '،'; flag=1}
+
+
+
+if (tkey == 66){field.value = field.value + 'لآ'; flag=1}
+
+
+
+if (tkey == 78){field.value = field.value + 'آ'; flag=1}
+
+
+
+if (tkey == 62){field.value = field.value + '.'; flag=1}
+
+
+
+if (tkey == 123){field.value = field.value + '<'; flag=1}
+
+
+
+if (tkey == 125){field.value = field.value + '>'; flag=1}
+
+
+
+if (tkey == 76){field.value = field.value + '/'; flag=1}
+
+
+
+
+
+
+
+if (flag==1) return false;
+
+
+}
+
+
+
+
+
+
+
+function makeArray() {
+
+
+
+for (var i=0; i < arguments.length; i++) this[i] = arguments[i];
+
+
+
+this.length = arguments.length;
+
+
+
+}
+
+
+
+
+
+var ach = new makeArray("ش","لا","ؤ","ي","ث","ب","ل","ا","ه","ت","ن","م","ة","ى","خ","ح","ض","ق","س","ف","ع","ر","ص","ء","غ","ئ");
+
+
+</script>
+<h1>مواقع مختارة</h1>
+<center>
+<table width="90%" id="sitestable">
+<tr><td>
+<h2>مواقع إسلامية</h2>
+<p>
+هذه مجموعة من المواقع الإسلامية المشهورة:
+<ul>
+	<li>عامة<ul>
+<li><a href="http://www.islamway.com">طريق الإسلام</a>
+<li><a href="http://www.emanway.com/" title="بإشراف فضيلة الشيخ نبيل العوضي">طريق الإيمان</a>
+<li><a href="http://www.islammessage.com/" title="بإشراف فضيلة الشيخ د. عبد العزيز الفوزان">رسالة الإسلام</a>
+<li><a href="http://www.islammemo.cc/">مفكرة الإسلام</a>
+<li><a href="http://www.islamstory.com/">قصة الإسلام</a>
+</ul>
+	<li>استمع للقرآن: <a href="http://www.mp3quran.net" title="تسجيلات عالية الجودة لقراءة القرآن">MP3 Quran</a> | <a href="http://quranicaudio.com/" title="تسجيلات عالية الجودة لقراءة القرآن">Quranic Audio</a> | <a href="http://www.tvquran.com/" title="">TV Quran</a>
+	<li><a href="http://www.quranexplorer.com/quran/">تصفح النص القرآني</a> | <a href="http://www.quranflash.com/quranflash.html">مصاحف فلاش</a>
+	<li>مكتبات:
+<a href="http://thawab.ojuba.org/">مكتبة ثواب</a> | 
+<a href="http://www.islamweb.net/newlibrary/index.php">مكتبة الشبكة الإسلامية</a> | 
+<a href="http://www.al-islam.com" title="وزارة الشؤون الإسلامية والأوقاف والدعوة والإرشاد في المملكة العربية السعودية">موقع الإسلام</a> | <a href="http://www.islamhouse.com/">islamhouse بلغات مختلفة</a>
+
+	<li>فتاوى: <a href="http://www.islam-qa.com/ar">الإسلام سؤال وجواب</a> | <a href="http://www.islamweb.org/ver2/Fatwa/index.php">فتاوى الشبكة الإسلامية</a>
+	<li>أخرى: <a href="http://www.wathakker.net/" title="وذكر">وذكر</a> | <a href="http://knoon.com/" title="فلاشات إسلامية">موقع كنون</a> | <a href="http://www.al-fr.net/athkar">أذكار بالصوت</a>
+</ul>
+</p>
+</td><td>
+<h2>مواقع تقنية حرة</h2>
+<p>
+هذه مجموعة من المواقع التقنية المتعلقة بالبرمجيات الحرة
+<ul>
+<li><a href="http://www.ojuba.org" title="جودة حرية أمان">أعجوبة</a>
+<li><a href="http://www.linuxac.org" title="">مجمتمع لينكس العربي</a>
+<li><a href="http://www.linux-ar.org/forum/index.php" title="">لينكس العرب</a>
+<li><a href="http://www.arabeyes.org/" title="">عرب-آيز</a>
+</ul>
+</p>
+
+</p>
+</td><td>
+<h2>رسم جرافيكس</h2>
+<p>
+<ul>
+<li><a href="http://maxforums.net/index.php?s=57dd72f93622a6bb369bd5ef3112b467" title="المنابر - موقع لتعليم الجرافيكس على برامج مختلفة">MaxForums</a>
+<li><a href="http://www.islamcg.com/">الجرافيكس الدعوي</a>
+<li><a href="http://www.sakkal.com/squarekufi/instruction/index.html" title="درس في الخط العربي الإنجليزية">الكوفي التكعيبي</a>
+<li><a href="http://sarwatemara.jeeran.com/%D9%85%D8%B9%D8%A7%20%D9%86%D9%83%D8%AA%D8%A8%20%D8%AD%D8%B1%D9%81.html" title="تعلم الخط العربي">ثروت عمارة</a>
+</ul>
+</p>
+</td></tr>
+<tr><td>
+<h2>علمية وأدبية</h2>
+<p>
+<ul>
+<li><a href="http://www.6abib.com" title="طبيب.كوم">طبيب.كوم</a>
+<li><a href="http://www.jwaher1.com/" title="">جواهر الرياضيات</a>
+<li><a href="http://mathramz.com/math/">الرياضيات رمز</a>
+<li><a href="http://www.toarab.ws/ title="موقع أدبي">الشنكبوتية</a>
+<li><a href="http://ibnontha.jeeran.com/">عجائب العربية</a>
+<li><a href="http://www.arabiclinguistics.net/">شبكة اللغويات العربية</a>
+<li><a href="http://wzzan.com/">الوزان للشعر العربي</a>
+<li><a href="http://basm.kacst.edu.sa/">باسم - قاموس المصطلحات</a>
+</ul>
+</p>
+</td><td>
+<h2>موسوعات</h2>
+<p>
+<ul>
+<li><a href="http://ar.wikipedia.org" title="الموسوعة الحرة">ويكيبيديا</a> | 
+<a href="http://ar.wikisource.org/" title="أمهات الكتب">ويكي مصدر</a> | 
+<a href="http://ar.wikibooks.org/" title="كتب حرة">ويكي الكتب</a> | 
+<a href="http://ar.wikiquote.org/" title="اقتباسات مشهورة">ويكي الاقتباس</a>
+
+<li><a href="http://en.wikipedia.org" title="Free Encyclopedia">Wikipedia</a>
+<li><a href="http://www.marefa.org/">المعرفة</a>
+<li><a href="http://www.saaid.net" title="صيد الفوائد">صيد الفوائد</a>
+<li><a href="http://encyclopedia.aarabiah.net/" title="">الموسوعة العربية</a>
+</ul>
+
+</p>
+</td><td>
+<h2>أخرى</h2>
+<p>
+<ul>
+<li><a href="http://forum.ma3ali.net/">شبكة المعالي</a>
+<li><a href="http://www.harfkids.com/fun_Story.aspx">موقع حرف للأطفال</a>
+<li><a href="http://www.kids.jo/main/StoryCat.aspx">قصص أطفال</a>
+<li><a href="http://www.el3b.com" title="ألعاب فلاش">العب</a>
+<li><a href="http://www.alboqah.com/">البقعة</a>
+<li><a href="http://www.isyoutube.com/" title="Islamic Tube">فيديو إسلامي</a>| <a href="http://www.naqatube.com/" title="Naqa Tube">اليوتيوب النقي</a> | <a href="http://www.tubeislam.com/">TubeIslam</a>
+<li><a href="http://www.ibda3world.com/">عالم الإبداع</a>
+<li><a href="http://www.moshtry.com/">دليل المشتري</a>
+</ul>
+</p>
+</td></tr>
+</table>
+</center>
+	</body>
+</html>

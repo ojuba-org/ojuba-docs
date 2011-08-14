@@ -122,7 +122,7 @@ if [ -x /usr/bin/update-desktop-database ]; then update-desktop-database &> /dev
 if [ -x /usr/bin/scrollkeeper-update ]; then scrollkeeper-update -q; fi
 if [ -x /usr/bin/update-desktop-database ]; then update-desktop-database &> /dev/null; fi
 
-%post -n ojuba-release-notes
+%postun -n ojuba-release-notes
 if [ -x /usr/bin/scrollkeeper-update ]; then scrollkeeper-update -q; fi
 if [ -x /usr/bin/update-desktop-database ]; then update-desktop-database &> /dev/null; fi
 

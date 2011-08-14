@@ -5,8 +5,8 @@ GenericName=Ojuba Documentation
 GenericName[ar]=وثائق أعجوبة
 Comment=Ojuba Project Documentation
 Comment[ar]=مشروع التوثيق من أعجوبة
-Exec=htmlview /usr/share/doc/HTML/ojuba-docs/index.html
+Exec=xdg-open /usr/share/doc/HTML/ojuba-docs/index.html
 Icon=help-about
 Terminal=false
 Type=Application
-
+Categories=System;Documentation;

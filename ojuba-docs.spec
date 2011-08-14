@@ -1,7 +1,7 @@
 %define fedora_version 15.0.0
 %define ojuba_version 5
 Name:		ojuba-docs
-Version:	%{ojuba_version}.0.2
+Version:	%{ojuba_version}.0.3
 Release:	1
 Summary:	Documentation from ojuba.org
 URL:		http://docs.ojuba.org
@@ -11,7 +11,10 @@ Source:		%{name}-%{version}.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:	noarch
 BuildRequires:	desktop-file-utils, bash
-Requires:	ojuba-release-notes
+Requires:	ojuba-docs-common = %{version}-%{release}
+Requires:	xdg-utils
+
+
 %description 
 Arabic documentation provided by ojuba.org community.
 It covers all aspects of computing from using to software development.
@@ -22,7 +25,8 @@ Group:		System Environment/Base
 License:	Waqf
 URL:		http://linux.ojuba.org
 BuildArch:	noarch
-Requires:	ojuba-release-notes
+Requires:	ojuba-docs-common = %{version}-%{release}
+Requires:	xdg-utils
 %description -n ojuba-linux-docs
 These are the official documentation for ojuba linux %{ojuba_version},
 
@@ -35,9 +39,25 @@ BuildArch:	noarch
 Provides:	indexhtml = %{fedora_version}-%{release}
 Provides:	fedora-release-notes = %{fedora_version}-%{release}
 Obsoletes:	indexhtml < 9-3
+Requires:	ojuba-docs-common = %{version}-%{release}
+Requires:	xdg-utils
 
 %description -n ojuba-release-notes
 These are the official Release Notes for ojuba linux %{ojuba_version},
+
+%package -n ojuba-docs-common
+Summary:	common files needed by ojuba linux %{ojuba_version} documentation
+Group:		System Environment/Base
+License:	Waqf
+URL:		http://linux.ojuba.org
+BuildArch:	noarch
+Provides:	indexhtml = %{fedora_version}-%{release}
+Provides:	fedora-release-notes = %{fedora_version}-%{release}
+Obsoletes:	indexhtml < 9-3
+
+%description -n ojuba-docs-common
+Common files shared between all ojuba linux %{ojuba_version} documentations
+
 
 %prep
 %setup -q
@@ -52,48 +72,32 @@ mkdir -p $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/ojuba-docs/
 mkdir -p $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/ojuba-linux-docs/
 mkdir -p $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/release-notes/
 mkdir -p $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/release-notes/img
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
 
 cp -a release-notes/* $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/release-notes/
 cp -a homepage/* $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/
+cp -a desktop/*.desktop $RPM_BUILD_ROOT%{_datadir}/applications/
 
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/kde4
-for i in desktop/*.desktop
-do
-install -m 644 $i $RPM_BUILD_ROOT%{_datadir}/applications/
-install -m 644 $i $RPM_BUILD_ROOT%{_datadir}/applications/kde4/
-
-cat <<EOF >>$RPM_BUILD_ROOT%{_datadir}/applications/$(basename $i)
-Categories=Documentation;X-Red-Hat-Base;
-StartupNotify=true
-OnlyShowIn=GNOME;XFCE;LXDE;
-EOF
-
-cat <<EOF >>$RPM_BUILD_ROOT%{_datadir}/applications/kde4/$(basename $i)
-OnlyShowIn=KDE;
-Categories=Documentation;System;
-X-KDE-StartupNotify=true
-EOF
-
-done
 
 install -m 755 -d $RPM_BUILD_ROOT%{_datadir}/ojuba-documents
 
 cp -a ojuba-docs/* $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/ojuba-docs/
 cp -a ojuba-linux-docs/* $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/ojuba-linux-docs/
-mv $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/ojuba-docs/all.css $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/release-notes/all.css
-ln -s %{_defaultdocdir}/HTML/release-notes/all.css $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/ojuba-docs/all.css
-ln -s %{_defaultdocdir}/HTML/release-notes/all.css $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/ojuba-linux-docs/all.css
-for i in $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/ojuba-docs/img/*.png
-do
-mv "$i" "$RPM_BUILD_ROOT%{_defaultdocdir}/HTML/release-notes/img/`basename $i`"
-done
-rmdir $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/ojuba-docs/img/
-ln -s %{_defaultdocdir}/HTML/release-notes/img $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/ojuba-docs/img
-ln -s %{_defaultdocdir}/HTML/release-notes/img $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/ojuba-linux-docs/img
+
+ln -s %{_defaultdocdir}/HTML/ojuba-docs/all.css $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/release-notes/all.css
+ln -s %{_defaultdocdir}/HTML/ojuba-docs/all.css $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/ojuba-linux-docs/all.css
+
+ln -s %{_defaultdocdir}/HTML/ojuba-docs/img $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/release-notes/img
+
+ln -s %{_defaultdocdir}/HTML/ojuba-docs/img $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/ojuba-linux-docs/img
+
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/ojuba-documents
 ln -s %{_defaultdocdir}/HTML/ojuba-docs/ "$RPM_BUILD_ROOT%{_datadir}/ojuba-documents/وثائق بوابة أعجوبة"
+ln -s %{_defaultdocdir}/HTML/release-notes/RELEASE-NOTES-ar.html "$RPM_BUILD_ROOT%{_datadir}/ojuba-documents/ملحوظات الإصدار.html"
 ln -s %{_defaultdocdir}/HTML/ojuba-linux-docs/ "$RPM_BUILD_ROOT%{_datadir}/ojuba-documents/وثائق أعجوبة لينكس"
+
+find ojuba-docs -type f | grep -v '\.png$' | grep -v '\.css$' |
+  sed -e 's!^!%{_defaultdocdir}/HTML/'!g;' > .ojuba-docs.ls
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -106,11 +110,31 @@ if [ -x /usr/bin/update-desktop-database ]; then update-desktop-database &> /dev
 if [ -x /usr/bin/scrollkeeper-update ]; then scrollkeeper-update -q; fi
 if [ -x /usr/bin/update-desktop-database ]; then update-desktop-database &> /dev/null; fi
 
-%files
+%post -n ojuba-linux-docs
+if [ -x /usr/bin/scrollkeeper-update ]; then scrollkeeper-update -q; fi
+if [ -x /usr/bin/update-desktop-database ]; then update-desktop-database &> /dev/null; fi
+
+%postun -n ojuba-linux-docs
+if [ -x /usr/bin/scrollkeeper-update ]; then scrollkeeper-update -q; fi
+if [ -x /usr/bin/update-desktop-database ]; then update-desktop-database &> /dev/null; fi
+
+%post -n ojuba-release-notes
+if [ -x /usr/bin/scrollkeeper-update ]; then scrollkeeper-update -q; fi
+if [ -x /usr/bin/update-desktop-database ]; then update-desktop-database &> /dev/null; fi
+
+%post -n ojuba-release-notes
+if [ -x /usr/bin/scrollkeeper-update ]; then scrollkeeper-update -q; fi
+if [ -x /usr/bin/update-desktop-database ]; then update-desktop-database &> /dev/null; fi
+
+
+%files -f .ojuba-docs.ls
 %defattr(-,root,root,-)
-%{_defaultdocdir}/HTML/ojuba-docs/
 %{_datadir}/applications/ojuba-docs.desktop
-%{_datadir}/applications/kde4/ojuba-docs.desktop
+
+%files -n ojuba-docs-common
+%defattr(-,root,root,-)
+%{_defaultdocdir}/HTML/ojuba-docs/*.css
+%{_defaultdocdir}/HTML/ojuba-docs/img/*.png
 
 %files -n ojuba-release-notes
 %defattr(-,root,root,-)
@@ -119,14 +143,12 @@ if [ -x /usr/bin/update-desktop-database ]; then update-desktop-database &> /dev
 %{_defaultdocdir}/HTML/images/*
 %{_defaultdocdir}/HTML/release-notes/
 %{_datadir}/applications/ojuba-release-notes.desktop
-%{_datadir}/applications/kde4/ojuba-release-notes.desktop
 %{_datadir}/ojuba-documents/
 
 %files -n ojuba-linux-docs
 %defattr(-,root,root,-)
 %{_defaultdocdir}/HTML/ojuba-linux-docs/
 %{_datadir}/applications/ojuba-linux-docs.desktop
-%{_datadir}/applications/kde4/ojuba-linux-docs.desktop
 
 %changelog
 * Wed Jul 28 2010 Muayyad Alsadi <alsadi@ojuba.org> - 4.0.2-1

@@ -58,14 +58,14 @@ do
 curl -L -o "images/$l" "${imgbaseurl}${l}"
 done < img-list.txt
 
-mv "ملحوظات_الإصدارة${rel}.html" ../release-notes/RELEASE-NOTES-ar.html
-ln -s /usr/share/doc/HTML/release-notes/RELEASE-NOTES-ar.html "ملحوظات_الإصدارة${rel}.html" 
+mv "ملحوظات-الإصدار-${rel}.html" ../release-notes/RELEASE-NOTES-ar.html
+ln -s /usr/share/doc/HTML/release-notes/RELEASE-NOTES-ar.html "ملحوظات-الإصدار-${rel}.html" 
 
 while read l
 do
 mv "images/$l" "../release-notes/images/$l"
 ln -s "/usr/share/doc/HTML/release-notes/images/$l" "images/$l"
-done < "img-list-ملحوظات_الإصدارة${rel}.txt"
+done < "img-list-ملحوظات-الإصدار-${rel}.txt"
 
 rm pg-list.htm pg-list.txt img-list.txt img-list-*.txt
 

@@ -96,7 +96,7 @@ ln -s %{_defaultdocdir}/HTML/ojuba-docs/ "$RPM_BUILD_ROOT%{_datadir}/ojuba-docum
 ln -s %{_defaultdocdir}/HTML/release-notes/RELEASE-NOTES-ar.html "$RPM_BUILD_ROOT%{_datadir}/ojuba-documents/ملحوظات الإصدار.html"
 ln -s %{_defaultdocdir}/HTML/ojuba-linux-docs/ "$RPM_BUILD_ROOT%{_datadir}/ojuba-documents/وثائق أعجوبة لينكس"
 
-find ojuba-docs -type f | grep -v '\.png$' | grep -v '\.css$' |
+find ojuba-docs -type f | grep -v 'ojuba-docs/img/' | grep -v '\.css$' |
   sed -e 's!^!%{_defaultdocdir}/HTML/!g;' > .ojuba-docs.ls
 
 %clean

@@ -3,13 +3,13 @@
 Name:		ojuba-docs
 Version:	%{ojuba_version}.0.3
 Release:	1
+BuildArch:	noarch
 Summary:	Documentation from ojuba.org
 URL:		http://docs.ojuba.org
 Group:		System Environment/Base
 License:	Waqf
 Source:		%{name}-%{version}.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildArch:	noarch
 BuildRequires:	desktop-file-utils, bash
 Requires:	ojuba-docs-common = %{version}-%{release}
 Requires:	xdg-utils
@@ -97,7 +97,7 @@ ln -s %{_defaultdocdir}/HTML/release-notes/RELEASE-NOTES-ar.html "$RPM_BUILD_ROO
 ln -s %{_defaultdocdir}/HTML/ojuba-linux-docs/ "$RPM_BUILD_ROOT%{_datadir}/ojuba-documents/وثائق أعجوبة لينكس"
 
 find ojuba-docs -type f | grep -v '\.png$' | grep -v '\.css$' |
-  sed -e 's!^!%{_defaultdocdir}/HTML/'!g;' > .ojuba-docs.ls
+  sed -e 's!^!%{_defaultdocdir}/HTML/!g;' > .ojuba-docs.ls
 
 %clean
 rm -rf $RPM_BUILD_ROOT

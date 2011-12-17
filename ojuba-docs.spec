@@ -1,7 +1,7 @@
-%define fedora_version 15.0.0
-%define ojuba_version 5
+%define fedora_version 16
+%define ojuba_version 16
 Name:		ojuba-docs
-Version:	%{ojuba_version}.0.3
+Version:	%{ojuba_version}.2.0
 Release:	1
 BuildArch:	noarch
 Summary:	Documentation from ojuba.org
@@ -36,8 +36,8 @@ Group:		System Environment/Base
 License:	Waqf
 URL:		http://linux.ojuba.org
 BuildArch:	noarch
-Provides:	indexhtml = %{fedora_version}-%{release}
-Provides:	fedora-release-notes = %{fedora_version}-%{release}
+Provides:	indexhtml = %{version}-%{release}
+Provides:	fedora-release-notes = %{version}-%{release}
 Obsoletes:	indexhtml < 9-3
 Requires:	ojuba-docs-common = %{version}-%{release}
 Requires:	xdg-utils
@@ -51,8 +51,8 @@ Group:		System Environment/Base
 License:	Waqf
 URL:		http://linux.ojuba.org
 BuildArch:	noarch
-Provides:	indexhtml = %{fedora_version}-%{release}
-Provides:	fedora-release-notes = %{fedora_version}-%{release}
+Provides:	indexhtml = %{version}-%{release}
+Provides:	fedora-release-notes = %{version}-%{release}
 Obsoletes:	indexhtml < 9-3
 
 %description -n ojuba-docs-common

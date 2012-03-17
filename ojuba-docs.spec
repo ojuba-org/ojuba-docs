@@ -2,7 +2,7 @@
 %define ojuba_version 16
 %define date %( date +%Y%m%d )
 Name:		ojuba-docs
-Version:	%{ojuba_version}.2.2
+Version:	%{ojuba_version}.2.3
 Release:	1.%{date}
 BuildArch:	noarch
 Summary:	Documentation from ojuba.org
@@ -65,7 +65,7 @@ Common files shared between all ojuba linux %{ojuba_version} documentations
 
 %build
 bash get-oj-docs-from-site.sh
-bash get-oj-linux-docs-from-site.sh
+bash get-oj-linux-docs-from-site.sh %{ojuba_version}
 
 %install
 rm -rf $RPM_BUILD_ROOT

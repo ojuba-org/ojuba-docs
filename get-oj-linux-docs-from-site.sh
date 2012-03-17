@@ -1,4 +1,6 @@
 #! /bin/bash
+[ $# -le 1 ] && echo "please specify release number" && exit 1
+rel=$1
 mkdir ojuba-linux-docs 2>/dev/null || :
 mkdir ojuba-linux-docs/images 2>/dev/null || :
 mkdir release-notes 2>/dev/null || :
@@ -7,7 +9,6 @@ pushd ojuba-linux-docs || {
   echo "can't change dir"
   exit 1
 }
-rel=4
 baseurl="http://www.ojuba.org/wiki/_export/xhtml/linux/"
 imgbaseurl="http://www.ojuba.org/wiki/_media/linux/"
 

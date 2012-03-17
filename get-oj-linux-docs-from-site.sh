@@ -1,5 +1,5 @@
 #! /bin/bash
-[ $# -le 1 ] && echo "please specify release number" && exit 1
+[ $# -lt 1 ] && echo "please specify release number" && exit 1
 rel=$1
 mkdir ojuba-linux-docs 2>/dev/null || :
 mkdir ojuba-linux-docs/images 2>/dev/null || :

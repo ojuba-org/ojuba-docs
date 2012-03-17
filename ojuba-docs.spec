@@ -2,7 +2,7 @@
 %define ojuba_version 16
 %define date %( date +%Y%m%d )
 Name:		ojuba-docs
-Version:	%{ojuba_version}.2.3
+Version:	%{ojuba_version}.2.4
 Release:	1.%{date}
 BuildArch:	noarch
 Summary:	Documentation from ojuba.org

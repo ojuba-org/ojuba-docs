@@ -2,7 +2,7 @@
 %define ojuba_version 16
 Name:		ojuba-docs
 Version:	%{ojuba_version}.2.0
-Release:	1
+Release:	1.$(date +%Y%m%d)
 BuildArch:	noarch
 Summary:	Documentation from ojuba.org
 URL:		http://docs.ojuba.org

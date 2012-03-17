@@ -1,7 +1,7 @@
 %define fedora_version 16
 %define ojuba_version 16
 Name:		ojuba-docs
-Version:	%{ojuba_version}.2.0
+Version:	%{ojuba_version}.2.1
 Release:	1.$(date +%Y%m%d)
 BuildArch:	noarch
 Summary:	Documentation from ojuba.org

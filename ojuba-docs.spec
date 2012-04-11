@@ -72,7 +72,6 @@ rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/ojuba-docs/
 mkdir -p $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/ojuba-linux-docs/
 mkdir -p $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/release-notes/
-mkdir -p $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/release-notes/img
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
 
 cp -a release-notes/* $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/release-notes/
@@ -88,9 +87,9 @@ cp -a ojuba-linux-docs/* $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/ojuba-linux-docs/
 ln -s %{_defaultdocdir}/HTML/ojuba-docs/all.css $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/release-notes/all.css
 ln -s %{_defaultdocdir}/HTML/ojuba-docs/all.css $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/ojuba-linux-docs/all.css
 
-ln -s %{_defaultdocdir}/HTML/ojuba-docs/img $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/release-notes/img
+ln -s %{_defaultdocdir}/HTML/ojuba-docs/img $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/release-notes/
 
-ln -s %{_defaultdocdir}/HTML/ojuba-docs/img $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/ojuba-linux-docs/img
+ln -s %{_defaultdocdir}/HTML/ojuba-docs/img $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/ojuba-linux-docs/
 
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/ojuba-documents
 ln -s %{_defaultdocdir}/HTML/ojuba-docs/ "$RPM_BUILD_ROOT%{_datadir}/ojuba-documents/وثائق بوابة أعجوبة"

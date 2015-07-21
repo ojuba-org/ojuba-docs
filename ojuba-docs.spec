@@ -1,99 +1,110 @@
 %global owner ojuba-org
 %global commit #Write commit number here
-%global fedora_version 20
-%global ojuba_version 35
+%global fedora_version 22
+%global ojuba_version 36
 %global date %( date +%Y%m%d )
 
-Name:		ojuba-docs
-Version:	%{ojuba_version}.2.4
-Release:	1.%{date}%{?dist}
-BuildArch:	noarch
-Summary:	Documentation from ojuba.org
-URL:		http://ojuba.org
-Group:		System Environment/Base
-License:	WAQFv2
-Source:		https://github.com/%{owner}/%{name}/archive/%{commit}/%{name}-%{commit}.tar.gz
-BuildRequires:	bash
-BuildRequires:	desktop-file-utils
-Requires:	ojuba-docs-common = %{version}-%{release}
-Requires:	xdg-utils
+Name: ojuba-docs
+Version: %{ojuba_version}
+Release: 1.%{date}%{?dist}
+BuildArch: noarch
+Summary: Documentation from Ojuba.org
+Summary(ar): وثائق أعجوبة
+URL: http://ojuba.org
+License: WAQFv2
+Source: https://github.com/%{owner}/%{name}/archive/%{commit}/%{name}-%{commit}.tar.gz
+BuildRequires: bash
+BuildRequires: desktop-file-utils
+Requires: ojuba-docs-common = %{version}-%{release}
+Requires: xdg-utils
 
 
 %description 
 Arabic documentation provided by ojuba.org community.
-It covers all aspects of computing from using to software development.
+It covers all aspects of computing from using to
+software development.
 
-%package -n ojuba-linux-docs
-Summary:	Ojuba Linux %{ojuba_version} Documentation
-Group:		System Environment/Base
-License:	Waqf
-URL:		http://ojuba.org
-BuildArch:	noarch
-Requires:	ojuba-docs-common = %{version}-%{release}
-Requires:	xdg-utils
+%description -l ar
+وثائق أعجوبة المزّودة من قبل بوّابة أعجوبة الإلكترونية.
+تُغطي الوثائق ما يتعلق بالحوسبة من الاستخدام و حتّى التّطوير.
 
-%description -n ojuba-linux-docs
-These are the official documentation for ojuba linux %{ojuba_version},
+%package -n ojuba-os-docs
+Summary: Ojuba %{ojuba_version} Documentation
+Sumary(ar): وثائق نظام أعجوبة %{ojuba_version}
+License: WAQFv2
+URL: http://ojuba.org
+BuildArch: noarch
+Requires: ojuba-docs-common = %{version}-%{release}
+Requires: xdg-utils
+
+%description -n ojuba-os-docs
+These are the official documentation for Ojuba OS %{ojuba_version},
+
+%description -n ojuba-os-docs -l ar
+الوثائق الرّسمية لنظام أعجوبة %{ojuba_version}.
 
 %package -n ojuba-release-notes
-Summary:	Release Notes for ojuba linux %{ojuba_version}
-Group:		System Environment/Base
-License:	Waqf
-URL:		http://ojuba.org
-BuildArch:	noarch
-Provides:	indexhtml = %{fedora_version}-%{release}
-Provides:	fedora-release-notes = %{fedora_version}-%{release}
-Obsoletes:	indexhtml < 9-3
-Requires:	ojuba-docs-common = %{version}-%{release}
-Requires:	xdg-utils
+Summary: Release Notes for Ojuba OS %{ojuba_version}
+Sumary(ar): ملحوظات إصدار أعجوبة %{ojuba_version}
+License: WAQFv2
+URL: http://ojuba.org
+BuildArch: noarch
+Provides: indexhtml = %{fedora_version}-%{release}
+Provides: fedora-release-notes = %{fedora_version}-%{release}
+Obsoletes: indexhtml
+Requires: ojuba-docs-common = %{version}-%{release}
+Requires: xdg-utils
 
 %description -n ojuba-release-notes
-These are the official Release Notes for ojuba linux %{ojuba_version},
+These are the official Release Notes for Ojuba OS %{ojuba_version}.
+
+%description -n ojuba-release-notes -l ar
+ملحوظات إصدار نظام أعجوبة %{ojuba_version}.
 
 %package -n ojuba-docs-common
-Summary:	common files needed by ojuba linux %{ojuba_version} documentation
-Group:		System Environment/Base
-License:	Waqf
-URL:		http://ojuba.org
-BuildArch:	noarch
-Provides:	indexhtml = %{fedora_version}-%{release}
-Provides:	fedora-release-notes = %{fedora_version}-%{release}
-Obsoletes:	indexhtml < 9-3
+Summary: Common files of ojuba-docs
+Summary(ar): الملفات المشتركة للوثائق
+License: WAQFv2
+URL: http://ojuba.org
+BuildArch: noarch
+Requires: rarian-compat
 
 %description -n ojuba-docs-common
-Common files shared between all ojuba linux %{ojuba_version} documentations
+Common files shared between all Ojuba OS %{ojuba_version} documentations.
 
+%description -n ojuba-docs-common -l ar
+الملفات المشتركة لكل توثيقات نظام أعجوبة %{ojuba_version}.
 
 %prep
 %setup -q -n %{name}-%{commit}
 
 %build
 bash get-oj-docs-from-site.sh
-bash get-oj-linux-docs-from-site.sh %{ojuba_version}
+bash get-oj-os-docs-from-site.sh %{ojuba_version}
 
 %install
-mkdir -p $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/ojuba-docs/
-mkdir -p $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/ojuba-linux-docs/
-mkdir -p $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/release-notes/
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
+mkdir -p %{buildroot}%{_defaultdocdir}/HTML/ojuba-docs/
+mkdir -p %{buildroot}%{_defaultdocdir}/HTML/ojuba-os-docs/
+mkdir -p %{buildroot}%{_defaultdocdir}/HTML/release-notes/
+mkdir -p %{buildroot}%{_datadir}/applications
 
-cp -a release-notes/* $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/release-notes/
-cp -a homepage/* $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/
-cp -a desktop/*.desktop $RPM_BUILD_ROOT%{_datadir}/applications/
+cp -a release-notes/* %{buildroot}%{_defaultdocdir}/HTML/release-notes/
+cp -a homepage/* %{buildroot}%{_defaultdocdir}/HTML/
+cp -a desktop/*.desktop %{buildroot}%{_datadir}/applications/
 
-install -m 755 -d $RPM_BUILD_ROOT%{_datadir}/ojuba-documents
+install -m 755 -d %{buildroot}%{_datadir}/ojuba-documents
 
-cp -a ojuba-docs/* $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/ojuba-docs/
-cp -a ojuba-linux-docs/* $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/ojuba-linux-docs/
+cp -a ojuba-docs/* %{buildroot}%{_defaultdocdir}/HTML/ojuba-docs/
+cp -a ojuba-os-docs/* %{buildroot}%{_defaultdocdir}/HTML/ojuba-os-docs/
 
-ln -s %{_defaultdocdir}/HTML/ojuba-docs/all.css $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/release-notes/all.css
-ln -s %{_defaultdocdir}/HTML/ojuba-docs/all.css $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/ojuba-linux-docs/all.css
-ln -s %{_defaultdocdir}/HTML/ojuba-docs/img $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/release-notes/
-ln -s %{_defaultdocdir}/HTML/ojuba-docs/img $RPM_BUILD_ROOT%{_defaultdocdir}/HTML/ojuba-linux-docs/
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/ojuba-documents
-ln -s %{_defaultdocdir}/HTML/ojuba-docs/ "$RPM_BUILD_ROOT%{_datadir}/ojuba-documents/وثائق بوابة أعجوبة"
-ln -s %{_defaultdocdir}/HTML/release-notes/RELEASE-NOTES-ar.html "$RPM_BUILD_ROOT%{_datadir}/ojuba-documents/ملحوظات الإصدار.html"
-ln -s %{_defaultdocdir}/HTML/ojuba-linux-docs/ "$RPM_BUILD_ROOT%{_datadir}/ojuba-documents/وثائق أعجوبة لينكس"
+ln -s %{_defaultdocdir}/HTML/ojuba-docs/all.css %{buildroot}%{_defaultdocdir}/HTML/release-notes/all.css
+ln -s %{_defaultdocdir}/HTML/ojuba-docs/all.css %{buildroot}%{_defaultdocdir}/HTML/ojuba-os-docs/all.css
+ln -s %{_defaultdocdir}/HTML/ojuba-docs/img %{buildroot}%{_defaultdocdir}/HTML/release-notes/
+ln -s %{_defaultdocdir}/HTML/ojuba-docs/img %{buildroot}%{_defaultdocdir}/HTML/ojuba-os-docs/
+mkdir -p %{buildroot}%{_datadir}/ojuba-documents
+ln -s %{_defaultdocdir}/HTML/ojuba-docs/ "%{buildroot}%{_datadir}/ojuba-documents/وثائق بوابة أعجوبة"
+ln -s %{_defaultdocdir}/HTML/release-notes/RELEASE-NOTES-ar.html "%{buildroot}%{_datadir}/ojuba-documents/ملحوظات الإصدار.html"
+ln -s %{_defaultdocdir}/HTML/ojuba-os-docs/ "%{buildroot}%{_datadir}/ojuba-documents/وثائق أعجوبة لينكس"
 
 find ojuba-docs -type f | grep -v 'ojuba-docs/img/' | grep -v '\.css$' |
   sed -e 's!^!%{_defaultdocdir}/HTML/!g;' > .ojuba-docs.ls
@@ -106,11 +117,11 @@ if [ -x /usr/bin/update-desktop-database ]; then update-desktop-database &> /dev
 if [ -x /usr/bin/scrollkeeper-update ]; then scrollkeeper-update -q; fi
 if [ -x /usr/bin/update-desktop-database ]; then update-desktop-database &> /dev/null; fi
 
-%post -n ojuba-linux-docs
+%post -n ojuba-os-docs
 if [ -x /usr/bin/scrollkeeper-update ]; then scrollkeeper-update -q; fi
 if [ -x /usr/bin/update-desktop-database ]; then update-desktop-database &> /dev/null; fi
 
-%postun -n ojuba-linux-docs
+%postun -n ojuba-os-docs
 if [ -x /usr/bin/scrollkeeper-update ]; then scrollkeeper-update -q; fi
 if [ -x /usr/bin/update-desktop-database ]; then update-desktop-database &> /dev/null; fi
 
@@ -124,16 +135,13 @@ if [ -x /usr/bin/update-desktop-database ]; then update-desktop-database &> /dev
 
 
 %files -f .ojuba-docs.ls
-%defattr(-,root,root,-)
 %{_datadir}/applications/ojuba-docs.desktop
 
 %files -n ojuba-docs-common
-%defattr(-,root,root,-)
 %{_defaultdocdir}/HTML/ojuba-docs/*.css
 %{_defaultdocdir}/HTML/ojuba-docs/img/*.png
 
 %files -n ojuba-release-notes
-%defattr(-,root,root,-)
 %{_defaultdocdir}/HTML/*.html
 %{_defaultdocdir}/HTML/*.css
 %{_defaultdocdir}/HTML/images/*
@@ -141,12 +149,20 @@ if [ -x /usr/bin/update-desktop-database ]; then update-desktop-database &> /dev
 %{_datadir}/applications/ojuba-release-notes.desktop
 %{_datadir}/ojuba-documents/
 
-%files -n ojuba-linux-docs
-%defattr(-,root,root,-)
-%{_defaultdocdir}/HTML/ojuba-linux-docs/
-%{_datadir}/applications/ojuba-linux-docs.desktop
+%files -n ojuba-os-docs
+%{_defaultdocdir}/HTML/ojuba-os-docs/
+%{_datadir}/applications/ojuba-os-docs.desktop
 
 %changelog
+* Sun Feb 16 2014 Mosaab Alzoubi <moceap@hotmail.com> - 36-1.20150721
+- General Revision
+- Update to ver 36
+- Add Arabic Summary and Descriptions
+- Remove Group tag
+- Remove repeated provides
+- New name for some packages
+- Remove old ATTR way
+
 * Sun Feb 16 2014 Mosaab Alzoubi <moceap@hotmail.com> - 35.2.4-1.20140216
 - General Revision.
 
